@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Dragon Curve Explorer">
+  <title>chrysp | Dragon Curve Explorer</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="vue.min.js"></script>
+</head>
+
+<body>
+  <div class="container" id="vueElement">
+    <div class="row my-3">
+      <div class="col">
+        <h1><a href="https://chrysp.github.io">chrysp</a></h1>
+      </div>
+      <div class="col text-right">
+        <a href="https://github.com/chrysp/dragon-curve-explorer" title="View source code on GitHub" target="_blank">
+          <img src="GitHub-Mark-32px.png">
+          view source code
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>Dragon Curve Explorer</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>A dragon curve is a self-similar fractal curve which can be approximated by recursive methods.</p>
+        <h3>Options</h3>
+        <p>
+          <label>Angle ({{degrees}}):</label>
+          <input id="degrees" type="range" value="90" min="0" max="360" step="1" v-model.number="degrees"
+            v-on:input="draw" />
+        </p>
+        <p>
+          <label>Zoom ({{lineLength}}):</label>
+          <input id="lineLength" type="range" value="3" min="1" max="300" step="1" v-model.number="lineLength"
+            v-on:input="draw" />
+        </p>
+        <p>
+          <label>Iterations ({{iterations}}):</label>
+          <input id="iterations" type="range" value="10" min="1" max="13" step="1" v-model.number="iterations"
+            v-on:input="draw" />
+        </p>
+      </div>
+      <div class="col">
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=wCyC-K_PnRY" target="_blank">Video explanation of the Dragon
+              Curve</a></li>
+          <li><a href="https://www.youtube.com/watch?v=v678Em6qyzk" target="_blank">Video of Donald Knuth discussing the
+              Dragon Curve</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Dragon_curve" target="_blank">Wikipedia page for Dragon Curve</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h3>Display</h3>
+        <canvas width="525" height="450" style="border:1px solid #000000;" v-canvas></canvas>
+        <p>Iterations Performed: {{numberOfIterationsPerformed}} Lines Drawn: {{numberOfLinesDrawn}}</p>
+      </div>
+      <div class="col">
+        <h3>Animation</h3>
+        <canvas width="525" height="450" style="border:1px solid #000000;" v-animationcanvas></canvas>
+        <p>Iterations Animated: {{numberOfIterationsAnimated}} Lines Animated: {{numberOfLinesAnimated}}</p>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="dragon-curve.js"></script>
+</body>
+
+</html>
